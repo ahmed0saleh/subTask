@@ -1,0 +1,393 @@
+/* Start Variable */
+:root {
+  --transition: 0.4s;
+}
+
+/* End Variable */
+
+/* Global style */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: open-sans;
+  height: 1000px;
+}
+
+a,
+span {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Global style */
+
+/* Start Repeated Element */
+.container {
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
+}
+
+/* End Repeated Element */
+
+/* Start Navbar */
+.navbar {
+  background-color: rgba(0, 0, 0,1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  color: white;
+  width: 100%;
+  z-index: 9999;
+}
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 20px;
+  position: relative;
+  /* background-color: blueviolet; */
+}
+
+.navbar .container .logo {
+  font-weight: 600;
+}
+.navbar .container .link {
+  display: flex;
+  align-items: center;
+  /* background-color: chocolate; */
+}
+
+.navbar .container .link ul {
+  display: flex;
+  gap: 5px;
+}
+
+.navbar .container .link .icon {
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+}
+.navbar .container .link ul li a {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  padding-inline: 15px;
+  position: relative;
+}
+
+.navbar .container .link ul li a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: white;
+  left: 15px;
+  top: calc(100% + 5px);
+  transition: var(--transition) width;
+}
+
+.navbar .container .link ul li a:hover::before {
+  width: calc(100% - 30px);
+}
+
+body:not(:has(:target)) .navbar .container .link ul li .home-link::before,
+body:has(.head:target) .navbar .container .link ul li .home-link::before,
+body:has(.about:target) .navbar .container .link ul li .about-link::before,
+body:has(.serv:target) .navbar .container .link ul li .serv-link::before,
+body:has(.work:target) .navbar .container .link ul li .work-link::before,
+body:has(.blog:target) .navbar .container .link ul li .blog-link::before,
+body:has(.contact:target) .navbar .container .link ul li .contact-link::before{
+  width: calc(100% - 30px);
+}
+
+/* ?Start Media */
+@media screen and (max-width: 768px) {
+  .navbar .container .link .icon {
+    display: block;
+  }
+
+  .navbar .container .link ul {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    left: 0;
+    top: calc(100% + 20px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: #080808;
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition);
+    padding-block: 15px;
+  }
+
+  .navbar .container .link:hover ul {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+  }
+}
+/* ?End Media */
+/* End Navbar */
+
+/* Start Header */
+.head {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../image/intro-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.head .head-content {
+  width: 100%;
+  text-align: center;
+  color: white;
+  margin-top: -73px;
+}
+
+.head .head-content h1 {
+  letter-spacing: 1px;
+  font-size: 80px;
+  position: relative;
+  font-weight: 600;
+}
+
+.head .head-content h1::first-letter {
+  margin-right: 10px;
+}
+
+.head .head-content h1::after {
+  content: "";
+  position: absolute;
+  font-size: 40px;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 1px;
+  font-weight: 500;
+  animation: typing 8s infinite;
+}
+
+@media screen and (max-width: 991px) {
+  .head .head-content h1 {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .head .head-content h1 {
+    font-size: 40px;
+  }
+
+  .head .head-content h1::after {
+    font-size: 20px;
+  }
+}
+/* End Header */
+
+/* Start Animation */
+@keyframes typing {
+  0%,
+  34.5% {
+    content: "";
+  }
+  1.5%,
+  33% {
+    content: "C|";
+  }
+  3%,
+  31.5% {
+    content: "CE|";
+  }
+  4.5%,
+  30% {
+    content: "CEO|";
+  }
+  6%,
+  28.5% {
+    content: "CEO D|";
+  }
+  7.5%,
+  27% {
+    content: "CEO De|";
+  }
+  9%,
+  25.5% {
+    content: "CEO Dev|";
+  }
+  10.5%,
+  24% {
+    content: "CEO DevF|";
+  }
+  12%,
+  22.5% {
+    content: "CEO DevFo|";
+  }
+  13.5%,
+  21% {
+    content: "CEO DevFol|";
+  }
+  15%,
+  19.5% {
+    content: "CEO DevFoli|";
+  }
+  16.5%,
+  18% {
+    content: "CEO DevFolio|";
+  }
+  36% {
+    content: "W|";
+  }
+  37.5% {
+    content: "We|";
+  }
+  39% {
+    content: "Web|";
+  }
+  40.5% {
+    content: "Web D|";
+  }
+  42% {
+    content: "Web De|";
+  }
+  43.5% {
+    content: "Web Dev|";
+  }
+  45% {
+    content: "Web Deve|";
+  }
+  46.5% {
+    content: "Web Devel|";
+  }
+  48% {
+    content: "Web Develo|";
+  }
+  49.5% {
+    content: "Web Develop|";
+  }
+  51% {
+    content: "Web Develope|";
+  }
+  52.5%,
+  54% {
+    content: "Web Developer|";
+  }
+  55.5% {
+    content: "Web Develope|";
+  }
+  57% {
+    content: "Web Develop|";
+  }
+  58.5% {
+    content: "Web Develo|";
+  }
+  60% {
+    content: "Web Devel|";
+  }
+  61.5% {
+    content: "Web Deve|";
+  }
+  63% {
+    content: "Web Dev|";
+  }
+  64.5% {
+    content: "Web De|";
+  }
+  66% {
+    content: "Web Des|";
+  }
+  67.5% {
+    content: "Web Desi|";
+  }
+  69% {
+    content: "Web Desig|";
+  }
+  70.5% {
+    content: "Web Design|";
+  }
+  72% {
+    content: "Web Designe|";
+  }
+  73.5%,
+  75% {
+    content: "Web Designer|";
+  }
+  76.5% {
+    content: "Web Designe|";
+  }
+  78% {
+    content: "Web Design|";
+  }
+  79.5% {
+    content: "Web Desig|";
+  }
+  81% {
+    content: "Web Desi|";
+  }
+  82.5% {
+    content: "Web Des|";
+  }
+  84% {
+    content: "Web De|";
+  }
+  86% {
+    content: "Web D|";
+  }
+  88% {
+    content: "Web |";
+  }
+  90% {
+    content: "Web|";
+  }
+  92% {
+    content: "We|";
+  }
+  94% {
+    content: "W|";
+  }
+  100% {
+    content: "";
+  }
+}
+/* End Animation */
